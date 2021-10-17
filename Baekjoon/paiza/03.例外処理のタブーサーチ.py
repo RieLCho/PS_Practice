@@ -4,12 +4,20 @@ d = [[int(x) for x in input().split()] for y in range(n)]
 p = [[int(x) for x in input().split()] for y in range(L)]
 
 diff = [[0 for x in range(L - 1)] for y in range(m)]
-for i in range(L - 1):
+for i in range(L):
     for j in range(m):
-        diff[i][j] = p[i + 1][j] - p[i][j]
+        try:
+            diff[i][j] = p[i + 1][j] - p[i][j]
+        except IndexError:
+            pass
 
-for i in range(L - 1):
+isValid = False
+
+for i in range(n):
     for j in range(n):
-        if diff[i] == d[j]:
-            print(j + 1)
-            break
+        for k in range(m):
+            if diff[i][k] != d[j][k]:
+                isValid = False
+                break
+        if isValid:
+            print(j+1)

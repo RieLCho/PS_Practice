@@ -1,3 +1,5 @@
+# 인접 행렬 방식 예제 
+# adjacency matrix example
 INF = 999999999
 
 graph = [
